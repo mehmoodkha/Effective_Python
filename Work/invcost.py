@@ -8,4 +8,5 @@ with open("Data/inventory.csv") as FH:
 		quant = int(parts[1])
 		price = float(parts[2])
 		total += quant*price
- 	print(total)
+
+ print("Total cost", total)
