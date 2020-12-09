@@ -8,12 +8,9 @@ def inventory_cost(filename):
                 headers = next(rows)
 		total = 0.0
 		for row in rows:
-			try:	
-				quant = int(row[1])
-				price = float(row[2])
-				total += quant*price
-			except ValueError:
-				print('Bad Row', row)
+			quant = int(row[1])
+			price = float(row[2])
+			total += quant*price
 	return total
 
 if len(sys.argv) == 2:
