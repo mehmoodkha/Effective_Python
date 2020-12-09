@@ -1,16 +1,21 @@
 #/usr/bin/python
+import csv
 import sys
 
 def inventory_cost(filename):
 	with open(filename,'rt') as FH:
-		headers = next(FH)
+		rows = csv.reader(FH)
+                headers = next(rows)
 		total = 0.0
-		for line in FH:
-			parts = line.split(',')
-			quant = int(parts[1])
-			price = float(parts[2])
+		for row in rows:
+			quant = int(row[1])
+			price = float(row[2])
 			total += quant*price
 	return total
 
-cost = inventory_cost(sys.argv[1])
+if len(sys.argv) == 2:
+	filename = sys.argv[1]
+else:
+	filename = '/Data/inventory.csv'
+cost = inventory_cost(filename)
 print('Total cost:', cost)
