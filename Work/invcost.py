@@ -1,7 +1,8 @@
 #/usr/bin/python
+import sys
 
 def inventory_cost(filename):
-	with open(filename) as FH:
+	with open(filename,'rt') as FH:
 		headers = next(FH)
 		total = 0.0
 		for line in FH:
@@ -11,5 +12,5 @@ def inventory_cost(filename):
 			total += quant*price
 	return total
 
-cost = inventory_cost('Data/inventory.csv')
+cost = inventory_cost(sys.argv[1])
 print('Total cost:', cost)
