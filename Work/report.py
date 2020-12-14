@@ -31,6 +31,20 @@ def read_prices(filename):
                 continue
     return prices
 
+def make_report(products, prices):
+	values = list()
+	
+       	for prod in products:
+		name = prod['name']
+		quant = prod['quant']
+		price = prod['price']
+		latest_price = prices[name]
+		values.append( (name, quant, latest_price, latest_price - price) )
+
+	return values
+
+	
+
 inventory = read_inventory('Data/inventory.csv')
 
 prices = read_prices('Data/prices.csv')
@@ -49,10 +63,15 @@ print("PresentValue", presentvalue)
 Gain=presentvalue-totalcost
 print(Gain)
 
+report = make_report(inventory, prices)
+
+for row in report:
+	print(row)
+
 #print("Inventroy Items", inventory)
 # print("Inventory Items")
 # from pprint import pprint
 # pprint(inventory)
 # pprint(prices)
 
-commit 3 different price.
+#commit 3 different price.
