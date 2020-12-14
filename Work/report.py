@@ -34,7 +34,7 @@ def read_prices(filename):
 def make_report(products, prices):
 	values = list()
 	
-       	for prod in products:
+	for prod in products:
 		name = prod['name']
 		quant = prod['quant']
 		price = prod['price']
@@ -65,13 +65,19 @@ print(Gain)
 
 report = make_report(inventory, prices)
 
-for row in report:
-	print(row)
+header = ('Name','Quantity', 'Price', 'Change')
+width=10
+n_cols = len(header)
+print('%10s %10s %10s %10s' % header)# pprint(prices)
+print(f"{'-' * width} " * n_cols)
+
+
+for name, quant, price, change in report:
+	print(f'{name:>10s} {quant:10d} {price:10.2f} {change:10.2f}')
+#for row in report:
+#	print( '%10s %10d %10.2f  %10.2f' %row)
 
 #print("Inventroy Items", inventory)
 # print("Inventory Items")
 # from pprint import pprint
 # pprint(inventory)
-# pprint(prices)
-
-#commit 3 different price.
